@@ -1,0 +1,38 @@
+name: qq-character-development
+
+services:
+  development:
+    image: qq-character-codex:0.164.0
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        CODEX_VERSION: "0.164.0"
+    container_name: qq-character-development
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    restart: unless-stopped
+    volumes:
+      - development-auth:/home/character/.codex-dev
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,noexec,size=64m,uid=10001,gid=10001
+    environment:
+      HOME: /home/character
+      CODEX_HOME: /home/character/.codex-dev
+      QQ_CHARACTER_PROFILE: development
+    healthcheck:
+      test: [CMD, node, -e, "require('fs').accessSync('/home/character/.codex-dev/character-ready')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    pids_limit: 128
+    mem_limit: 768m
+    cpus: 1.0
+
+volumes:
+  development-auth:
+    name: qq-character-dev-auth
+    labels:
+      qq-character.role: runtime

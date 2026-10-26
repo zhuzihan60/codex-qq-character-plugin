@@ -1,0 +1,6 @@
+{
+  "name": "qq-character",
+  "version": "0.1.0",
+  "description": "汐的本地部署、诊断、记忆与行为建议管理",
+  "skills": "./skills/"
+}

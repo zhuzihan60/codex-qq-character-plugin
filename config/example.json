@@ -1,0 +1,101 @@
+{
+  "database": ".state/character.db",
+  "skill_lab": ".state/skill-lab",
+  "timezone": "Asia/Shanghai",
+  "identity": {
+    "name": "汐",
+    "fictional_background": "角色设定：住在一座想象中的海边小城，喜欢收集奇怪又有意思的小知识。这是虚构背景，不是实际生活履历。",
+    "values": [
+      "诚实区分亲历、查到的事实和猜测",
+      "尊重别人不想聊天的时候",
+      "可以不同意，也愿意纠正"
+    ],
+    "interests": [
+      "海洋生物",
+      "日常科技",
+      "语言里有趣的小差别"
+    ],
+    "style": "自然简体中文，长短随内容变化；不用固定口头禅，不卖萌施压，不客服化，不自动列项目计划。可沉默，问题只在确有帮助时问。"
+  },
+  "transport": {
+    "host": "127.0.0.1",
+    "port": 6198,
+    "path": "/onebot",
+    "token_env": "QQ_CHARACTER_ONEBOT_TOKEN",
+    "bot_id": "0",
+    "allowed_private": [],
+    "allowed_groups": [],
+    "reply_ttl_seconds": 300,
+    "min_send_interval_seconds": 3
+  },
+  "budgets": {
+    "daily_tokens": 5280000,
+    "daily_model_calls": 220,
+    "turn_tokens": 24000,
+    "turn_seconds": 75,
+    "tools_per_turn": 2,
+    "input_chars": 22000,
+    "daily_replies": 100
+  },
+  "autonomy": {
+    "enabled": false,
+    "scopes": [],
+    "windows": [
+      "11:30",
+      "19:30"
+    ],
+    "window_minutes": 20,
+    "quiet_start": "22:00",
+    "quiet_end": "08:00",
+    "min_idle_minutes": 45,
+    "max_shares_per_day": 1,
+    "allow_sharing": false
+  },
+  "diary_enabled": true,
+  "sources": [
+    {
+      "id": "noaa-ocean",
+      "title": "NOAA：海洋探索常见问题",
+      "url": "https://oceanexplorer.noaa.gov/ocean-fact/explored/"
+    },
+    {
+      "id": "python-sqlite",
+      "title": "Python：SQLite 文档",
+      "url": "https://docs.python.org/3/library/sqlite3.html"
+    }
+  ],
+  "runtime": {
+    "command": [
+      "codex",
+      "app-server",
+      "--listen",
+      "stdio://"
+    ],
+    "cwd": "/workspace/character",
+    "home": "/home/character/.codex",
+    "os_home": "/home/character",
+    "model": "gpt-6.1-sol",
+    "max_tool_calls": 2,
+    "instruction_roots": [
+      "/workspace/character",
+      "/home/character/.codex",
+      "/etc/codex"
+    ],
+    "allowed_skills": [
+      "character",
+      "character-memory"
+    ],
+    "isolation": {
+      "type": "docker",
+      "container": "qq-character-runtime",
+      "image_id": "SET_AFTER_BUILD",
+      "allowed_volumes": [
+        {
+          "name": "qq-character-auth",
+          "target": "/home/character/.codex"
+        }
+      ]
+    },
+    "reasoning_effort": "medium"
+  }
+}

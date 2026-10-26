@@ -1,0 +1,38 @@
+{
+  "verified_at_utc": "2026-10-26T11:15:52.644625+08:00",
+  "python_tests": {
+    "time_utc": "2026-10-26T11:15:52.644625+08:00",
+    "tests": 83,
+    "failures": 0,
+    "errors": 0,
+    "passed": true,
+    "verification_kind": "OFFLINE_TESTS_WITH_REAL_LOOPBACK_WEBSOCKET",
+    "codex_inference": "mocked",
+    "qq_client": "simulated OneBot websocket client",
+    "sources": "fixtures",
+    "real_qq_messages_sent": 0
+  },
+  "node_bootstrap_tests": {
+    "failed": 0,
+    "type": "fake protocol process tests",
+    "passed": 4
+  },
+  "management_skill_validation": "passed",
+  "real_codex_protocol": {
+    "model_inference": false,
+    "version": "0.163.0-alpha.11.2",
+    "dedicated_home_is_os_isolation": false,
+    "handshake": true
+  },
+  "real_source_read": {
+    "autonomous_model_discovery": false,
+    "url": "https://oceanexplorer.noaa.gov/ocean-fact/explored/",
+    "sha256": "1bcc8971e4d86daa0d3b9f90beeb9ba89a39a1637d5f988ad29bc7cd9309d78f"
+  },
+  "not_verified": [
+    "Docker build and runtime",
+    "Dedicated Codex authentication and inference",
+    "Real QQ end-to-end delivery",
+    "Longitudinal character quality"
+  ]
+}

@@ -1,0 +1,48 @@
+name: qq-character-napcat
+
+services:
+  napcat:
+    image: mlikiowa/napcat-docker:v4.18.41@sha256:b101b8968cc31ae428ec0f8e117386e4ced7773b2d8226ed9f7ddfcec55f1b7e
+    container_name: qq-character-napcat
+    hostname: xi-qq
+    restart: unless-stopped
+    # Entrypoint initializes new volumes as root, then gosu runs QQ as 10002.
+    # QQ is a separate external client, with different boundaries from Codex.
+    cap_drop: [ALL]
+    cap_add: [CHOWN, DAC_OVERRIDE, FOWNER, SETGID, SETUID]
+    security_opt: [no-new-privileges:true]
+    environment:
+      NAPCAT_UID: "10002"
+      NAPCAT_GID: "10002"
+      NAPCAT_ENABLE_COREDUMP: "0"
+      TZ: Asia/Shanghai
+    ports:
+      - "127.0.0.1:6098:6099"
+    volumes:
+      - qq-data:/app/.config/QQ
+      - napcat-config:/app/napcat/config
+      - napcat-plugins:/app/napcat/plugins
+    pids_limit: 512
+    mem_limit: 2g
+    cpus: 2.0
+    ulimits:
+      core: 0
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "2"
+
+volumes:
+  qq-data:
+    name: qq-character-qq-data
+    labels:
+      qq-character.role: napcat
+  napcat-config:
+    name: qq-character-napcat-config
+    labels:
+      qq-character.role: napcat
+  napcat-plugins:
+    name: qq-character-napcat-plugins
+    labels:
+      qq-character.role: napcat

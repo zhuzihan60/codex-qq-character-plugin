@@ -1,0 +1,7 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "qq-character",
+  "version": "0.1.0",
+  "description": "Codex 插件：管理汐的 QQ 桥接器部署、隔离诊断、范围记忆和行为建议回滚。需要独立常驻服务。",
+  "repository": "https://github.com/zhuzihan60/codex-qq-character-plugin"
+}

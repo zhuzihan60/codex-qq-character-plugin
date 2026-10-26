@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-26",
+  "scope": "isolated public source snapshot",
+  "python": {
+    "command": "python scripts/verify.py",
+    "tests": 112,
+    "failures": 0,
+    "errors": 0,
+    "passed": true,
+    "python_version": "3.12",
+    "model": "mocked",
+    "qq_client": "simulated OneBot over real loopback WebSocket",
+    "sources": "fixtures",
+    "real_qq_messages_sent": 0
+  },
+  "node": {
+    "command": "node --test docker/bootstrap-protocol.test.mjs",
+    "tests": 4,
+    "passed": 4,
+    "failed": 0,
+    "runtime_process": "simulated"
+  },
+  "limitations": [
+    "Fresh Windows deployment was not performed on the target computer.",
+    "Public snapshot tests reuse an existing Python interpreter and installed dependencies, but import this snapshot's source.",
+    "Plugin package is supplied; installation into a Codex client was not performed by the publication task.",
+    "Historical real deployment results are summarized separately in deployment-2026-10-26.md."
+  ]
+}

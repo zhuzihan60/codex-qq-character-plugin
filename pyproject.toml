@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qq-character-growth"
+version = "0.1.0"
+description = "Evidence-grounded QQ character on the actual Codex App Server"
+requires-python = ">=3.12"
+dependencies = ["websockets==15.0.1", "tzdata==2025.2; sys_platform == 'win32'"]
+
+[project.optional-dependencies]
+deployment = ["qrcode==8.2", "pypng==0.20220715.0"]
+
+[project.scripts]
+qq-character = "qq_character.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

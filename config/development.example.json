@@ -1,0 +1,16 @@
+{
+  "command": ["codex", "app-server", "--listen", "stdio://"],
+  "cwd": "/workspace/development",
+  "home": "/home/character/.codex-dev",
+  "os_home": "/home/character",
+  "model": "",
+  "max_tool_calls": 0,
+  "instruction_roots": ["/workspace/development", "/home/character/.codex-dev", "/etc/codex"],
+  "allowed_skills": ["character-development"],
+  "isolation": {
+    "type": "docker",
+    "container": "qq-character-development",
+    "image_id": "SET_AFTER_BUILD",
+    "allowed_volumes": [{"name": "qq-character-dev-auth", "target": "/home/character/.codex-dev"}]
+  }
+}
